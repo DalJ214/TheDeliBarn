@@ -2,19 +2,20 @@ package com.items;
 
 public abstract class Toppings{
    private String name;
-   private double price;
 
-    public Toppings(String name, double price) {
+
+    public Toppings(String name) {
         this.name = name;
-        this.price = price;
+
     }
 
     public String getName() {
         return name;
     }
 
-    public double getPrice() {
-        return price;
+    public void setName(String name) {
+        this.name = name;
     }
+
     public abstract String getDescription();
 }
