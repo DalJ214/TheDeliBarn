@@ -46,6 +46,8 @@ Key Features
 
     Here's an example of a basic order:
 
+![ExamOfOutputCap2](https://github.com/user-attachments/assets/74b553f4-2224-4ffe-a7ca-927e9a66802c)
+
     
 
 ## Code Structure
@@ -78,6 +80,8 @@ Order Class
     by all product classes (like Sandwich, Chips, Drink). 
     This design pattern ensures polymorphism and simplifies the calculation of total order prices.
 
+![ipofCodeCap2](https://github.com/user-attachments/assets/8542438b-a72d-4fd6-b868-224926d64b7f)
+
 Why its Unique 
 
     The Product interface allows you to treat different items (sandwiches, drinks, chips) as products, 
@@ -87,3 +91,5 @@ Why its Unique
     This in turn keeps the pricing logic encapsulated withing each product class
     avoiding complex dependencies and making the codebase easier to extend(add in new products)
 ## Diagram 
+
+![DeliBarn_Diagram drawio](https://github.com/user-attachments/assets/55b39e74-2086-4a96-bc74-196d5de0523f)
