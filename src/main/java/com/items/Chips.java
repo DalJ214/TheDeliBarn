@@ -29,4 +29,8 @@ public class Chips implements Product {
     public double getPrice() {
         return price;
     }
+    public void printChipsDetails() {
+        System.out.println("Chips Type: " + flavor);
+        System.out.println("Price: $" + price);
+    }
 }

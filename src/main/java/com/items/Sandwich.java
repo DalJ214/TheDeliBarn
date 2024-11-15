@@ -1,17 +1,15 @@
 package com.items;
 
-import com.pluralsight.Order;
 import com.product.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich implements Product {
 
-    private String size,breadType;
+    private String size, breadType;
     private boolean toasted;
 
-     List<Topping> toppings;
+    List<Toppings> toppings;
 
     public Sandwich(String size, String breadType, boolean toasted, List<Toppings> toppings) {
         this.size = size;
@@ -45,11 +43,11 @@ public class Sandwich implements Product {
 
     }
 
-    public List<Topping> getToppings() {
+    public List<Toppings> getToppings() {
         return toppings;
     }
 
-    public void setToppings(List<Topping> toppings) {
+    public void setToppings(List<Toppings> toppings) {
         this.toppings = toppings;
     }
 
@@ -86,14 +84,21 @@ public class Sandwich implements Product {
 
 
     public void printOrderDetails() {
-        System.out.println("Your Sandwich Order:");
+        System.out.println("\n --Your Sandwich Order--");
         System.out.println("Bread Type: " + breadType);
         System.out.println("Size: " + size + "\"");
         System.out.println("Toasted: " + (toasted ? "Yes" : "No"));
-        System.out.println("Toppings:");
-        for (Topping topping : toppings) {
-            System.out.println(" - " + topping.getName());
+
+        System.out.println("\nToppings:");
+        if (toppings != null && !toppings.isEmpty()) {
+            for (Toppings toppings1 : toppings) {
+                System.out.println(" - " + toppings1.getName());
+
+            }
+        } else {
+            System.out.println(" - No toppings added.");
         }
-        System.out.println("Total Price: $" + calculatePrice());
+        System.out.println("\nTotal Price: $" + calculatePrice());
+
     }
 }

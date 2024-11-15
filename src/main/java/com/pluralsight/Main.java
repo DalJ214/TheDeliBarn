@@ -64,13 +64,18 @@ public class Main {
         }
 
 
-        ArrayList<Object> toppings = new ArrayList<>();
-        System.out.println("Pick up to 4 regular toppings (e.g., Lettuce, Tomato, Onion, Pickles, Cheese):");
+        ArrayList<Toppings> toppings = new ArrayList<>();
+        System.out.println("Pick up to 4 regular toppings ( Lettuce, Tomato, Onion, Pickles, Cheese):");
         for (int i = 0; i < 4; i++) {
             System.out.println("Topping " + (i + 1) + ": (Leave blank if no more toppings)");
             String toppingName = scan.nextLine();
             if (!toppingName.isEmpty()) {
-                toppings.add(new Topping(toppingName));
+                toppings.add(new Toppings(toppingName) {
+                    @Override
+                    public String getDescription() {
+                        return "";
+                    }
+                });
             } else {
                 break;
             }
@@ -121,41 +126,38 @@ public class Main {
         // Create the sandwich object
         Sandwich sandwich = new Sandwich(size, breadType, toasted, toppings);
 
-      double totalPrice = sandwich.calculatePrice();
-    }
+        double totalPrice = sandwich.calculatePrice();
+
 
         System.out.println("Would you like to add a drink to your order? (yes/no)");
-    String addDrink = scan.nextLine();
-    Drink drink = null;
+        String addDrink = scan.nextLine();
+        Drink drink = null;
 
-        if(addDrink.equalsIgnoreCase("yes"))
+        if (addDrink.equalsIgnoreCase("yes")) {
+            System.out.println("What size drink would ya like? (Small, Medium, Large)");
+            String drinkSize = scan.nextLine();
 
-    {
-        System.out.println("What size drink would ya like? (Small, Medium, Large)");
-        Scanner scan = null;
-        String drinkSize = scan.nextLine();
-
-        System.out.println("What flavor would ya like for your drink? (Sweet Tea, Mexican Coke, Strawberry Lemonade, Mr.Pib, Dr.Soda )");
-        String drinkFlavor = scan.nextLine();
+            System.out.println("What flavor would ya like for your drink? (Sweet Tea, Mexican Coke, Strawberry Lemonade, Mr.Pib, Dr.Soda )");
+            String drinkFlavor = scan.nextLine();
 
 
-        drink = new Drink(drinkSize, drinkFlavor);
+            drink = new Drink(drinkSize, drinkFlavor);
 
-        totalPrice += drink.getPrice();
+            totalPrice += drink.getPrice();
 
 
-        drink.printDrinkDetails();
+            drink.printDrinkDetails();
 
-    }
+        }
 
         System.out.println("Would you like to add chips to your order? (yes/no)");
         String addChips = scan.nextLine();
         Chips chips = null;
 
         if (addChips.equalsIgnoreCase("yes")) {
-            System.out.println("What type of chips would you like? (e.g., Regular, BBQ, Sour Cream)");
-        Scanner scan = null;
-        String chipType = scan.nextLine();
+            System.out.println("What type of chips would you like? ( Regular, BBQ, Sour Cream)");
+            scan = null;
+            String chipType = scan.nextLine();
 
 
             chips = new Chips(chipType);
@@ -171,7 +173,6 @@ public class Main {
         sandwich.printOrderDetails();
 
 
+    }
 
-        }
-
-
+}
