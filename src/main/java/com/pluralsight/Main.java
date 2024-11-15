@@ -37,6 +37,9 @@ public class Main {
     }
 
     private static void startNewOrder(Scanner scan) {
+
+        Order order = new Order("ORD3R" + System.currentTimeMillis());
+
         System.out.println("Alright, let’s get ya a sandwich! Here’s what I need to know.");
 
 
@@ -125,6 +128,7 @@ public class Main {
 
         // Create the sandwich object
         Sandwich sandwich = new Sandwich(size, breadType, toasted, toppings);
+        order.addItem(sandwich);
 
         double totalPrice = sandwich.calculatePrice();
 
@@ -144,9 +148,10 @@ public class Main {
             drink = new Drink(drinkSize, drinkFlavor);
 
             totalPrice += drink.getPrice();
+            order.addItem(drink);
 
 
-            drink.printDrinkDetails();
+
 
         }
 
@@ -156,22 +161,28 @@ public class Main {
 
         if (addChips.equalsIgnoreCase("yes")) {
             System.out.println("What type of chips would you like? ( Regular, BBQ, Sour Cream)");
-            scan = null;
             String chipType = scan.nextLine();
+
+            if (!chipType.isEmpty()) {
+                chips = new Chips(chipType);  // Create Chips object if valid input
+                totalPrice += chips.getPrice();  // Add the chips price to the total
+                order.addItem(chips);  // Add chips to the order
+                chips.printChipsDetails();  // Print chips details
+            } else {
+                System.out.println("Invalid chips type entered. Skipping chips.");
+            }
 
 
             chips = new Chips(chipType);
 
             totalPrice += chips.getPrice();
+            order.addItem(chips);
 
 
-            chips.printChipsDetails();
 
         }
-        System.out.println("Total Price: $" + totalPrice);
-
-        sandwich.printOrderDetails();
-
+        System.out.println("Order summary - ");
+        order.printOrderSummary();
 
     }
 
